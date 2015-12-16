@@ -3,11 +3,11 @@
 
 #include "cocos2d.h"
 
-class puzzleContoller
+class puzzleController
 {
 public:
-    puzzleContoller();
-	~puzzleContoller();
+    puzzleController();
+	~puzzleController();
     
 };
 

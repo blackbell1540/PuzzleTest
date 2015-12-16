@@ -1,10 +1,10 @@
 #include "puzzleController.h"
 
-puzzleController::puzzle()
+puzzleController::puzzleController()
 {
 	
 }
-puzzleController::~puzzle()
+puzzleController::~puzzleController()
 {
 	
 }
