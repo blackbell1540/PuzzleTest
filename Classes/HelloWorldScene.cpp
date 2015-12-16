@@ -2,8 +2,9 @@
 
 //puzzle classes
 #include "puzzle.h"
-//#include "partner.h"
+#include "partner.h"
 #include "puzzleController.h"
+#include "DataSetting.h"
 
 USING_NS_CC;
 
@@ -41,7 +42,7 @@ bool HelloWorld::init()
 	backgroundSprite->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
     // add the sprite as a child to this layer
-	this->addChild(backgroundSprite, 0);
+	this->addChild(backgroundSprite, BACKGROUND_Z);
     
 	
 
