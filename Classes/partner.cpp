@@ -1,7 +1,7 @@
 #include "partner.h"
 
 
-partner::partner(void)
+partner::partner(Vec2 position, Size size, int number)
 {
 }
 

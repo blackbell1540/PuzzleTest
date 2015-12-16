@@ -9,7 +9,7 @@ using namespace cocos2d;
 
 class puzzle
 {
-public:
+private:
 	//puzzle Sprite
 	Sprite* spritePuzzle;
 
@@ -22,11 +22,15 @@ public:
 	//create partner position
 	Vec2 partnerPosition;
 
-	////////////////////////////////////////////////////////////////////////////////
+	//baseScene
+	Node* scene;
 
+public:
 	//constructor(puzzle number, puzzle position, partner position)
-    puzzle(int puzzleNumber, float puzzleX, float puzzleY, float partnerX, float partnerY, string image);
-	
+    puzzle(int puzzleNumber, float puzzleX, float puzzleY,
+		float partnerX, float partnerY, string imageURI, Node* _scene);
+
+	//create partner
 	void createPartner(Vec2 partnerPosition, int partnerNumber);
 
 	~puzzle();
