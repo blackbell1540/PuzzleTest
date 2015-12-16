@@ -1,5 +1,10 @@
 #include "HelloWorldScene.h"
 
+//puzzle classes
+#include "puzzle.h"
+//#include "partner.h"
+#include "puzzleController.h"
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -30,16 +35,16 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("Grobot_03_01_bg.png");
+    Sprite* backgroundSprite = Sprite::create("Grobot_03_01_bg.jpg");
 
     // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+	backgroundSprite->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+	this->addChild(backgroundSprite, 0);
     
+	
+
     return true;
 }
 
