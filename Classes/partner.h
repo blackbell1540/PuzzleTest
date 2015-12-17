@@ -15,8 +15,10 @@ public:
 	int partnerNumebr;
 
 	//constructor
-	partner(Vec2 position, Size size, int number, Node* Scene);
+	partner(Vec2 position, Size size, int number);
 	~partner(void);
+
+	Sprite* getPartner();
 };
 
 #endif // __PARTNER_H__

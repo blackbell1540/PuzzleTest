@@ -3,11 +3,15 @@
 
 #include "cocos2d.h"
 
+using namespace std;
+using namespace cocos2d;
+
 class puzzleController
 {
 public:
-
-	puzzle myPuzzle;
+	//puzzle info
+	int number;
+	Vec2 currentPosition;
 	Vec2 createPosition;
 
     //constructor
@@ -15,7 +19,7 @@ public:
 	~puzzleController();
 
 	//pick up puzzle - get puzzle info
-	void pickup(puzzle selectedPuzzle);
+	void pickup(int number, Vec2 position);
 
 	//pick out puzzle - cotroller null, call not correct
 	void pickout();

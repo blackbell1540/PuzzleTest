@@ -11,7 +11,7 @@ USING_NS_CC;
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
+   auto scene = Scene::create();
     
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
@@ -33,6 +33,7 @@ bool HelloWorld::init()
         return false;
     }
     
+	/*background image*/
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -44,7 +45,11 @@ bool HelloWorld::init()
     // add the sprite as a child to this layer
 	this->addChild(backgroundSprite, BACKGROUND_Z);
     
-	
+	puzzle* pz1 = new puzzle(1, 200.0f, 200.0f, 500.0f, 500.0f, "Grobot_03_03_1big.png");
+	Sprite* spz1 = pz1->getPuzzle(); 
+	Sprite* ppz1 = pz1->getPartnerPuzzle();
+	this->addChild(spz1);
+	this->addChild(ppz1);
 
     return true;
 }

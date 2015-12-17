@@ -2,6 +2,7 @@
 #define __PUZZLE_H__
 
 #include "cocos2d.h"
+#include "partner.h"
 #include <string>
 
 using namespace std;
@@ -10,6 +11,8 @@ using namespace cocos2d;
 class puzzle
 {
 private:
+	partner* pt;
+
 	//puzzle Sprite
 	Sprite* spritePuzzle;
 
@@ -23,18 +26,21 @@ private:
 	Vec2 partnerPosition;
 
 	//baseScene
-	Node* scene;
+	//Node* scene;
 
 public:
 	//constructor(puzzle number, puzzle position, partner position)
     puzzle(int puzzleNumber, float puzzleX, float puzzleY,
-		float partnerX, float partnerY, string imageURI, Node* _scene);
+		float partnerX, float partnerY, string imageURI);
 
 	//create partner
 	void createPartner(Vec2 partnerPosition, int partnerNumber);
 
+	//get puzzle
+	Sprite* getPuzzle();
+	Sprite* getPartnerPuzzle();
+
 	~puzzle();
-    
 };
 
 #endif // __PUZZLE_H__
