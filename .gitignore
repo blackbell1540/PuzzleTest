@@ -75,3 +75,6 @@ proj.ios_mac
 #Resources
 .cocos-project.json
 CMakeLists.txt
+
+#bin
+bin
