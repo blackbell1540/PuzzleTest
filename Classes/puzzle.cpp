@@ -36,3 +36,26 @@ Sprite* puzzle::getPuzzle(){
 Sprite* puzzle::getPartnerPuzzle(){
 	return pt->getPartner();
 }
+
+void puzzle::addEvent(){
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->setSwallowTouches(true);
+
+	listener->onTouchBegan = CC_CALLBACK_2(puzzle::onTouchBegan, this);
+	listener->onTouchMoved = CC_CALLBACK_2(puzzle::onTouchMoved, this);
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, spritePuzzle);
+}
+
+bool puzzle::onTouchBegan(Touch *touch, Event *unused_event){
+	
+	return true;
+}
+void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
+	puzzlePosition = touch->getLocation();
+	MoveTo *pAction = MoveTo::create(1.0f, puzzlePosition);
+		spritePuzzle->runAction(pAction);
+}
+void puzzle::onTouchEnded(Touch *touch, Event *unused_event){
+}
+void puzzle::onTouchCancelled(Touch *touch, Event *unused_event){
+}

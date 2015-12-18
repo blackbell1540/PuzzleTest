@@ -46,13 +46,17 @@ bool HelloWorld::init()
 	this->addChild(backgroundSprite, BACKGROUND_Z);
     
 	puzzle* pz1 = new puzzle(1, 200.0f, 200.0f, 500.0f, 500.0f, "Grobot_03_03_1big.png");
+	pz1->addEvent();
 	Sprite* spz1 = pz1->getPuzzle(); 
 	Sprite* ppz1 = pz1->getPartnerPuzzle();
 	this->addChild(spz1);
 	this->addChild(ppz1);
 
+
     return true;
 }
+
+
 
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

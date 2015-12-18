@@ -40,6 +40,13 @@ public:
 	Sprite* getPuzzle();
 	Sprite* getPartnerPuzzle();
 
+	void addEvent();
+	//touch
+	bool onTouchBegan(Touch *touch, Event *unused_event); // 닿은 시점
+	void onTouchMoved(Touch *touch, Event *unused_event); // 드래그
+	void onTouchEnded(Touch *touch, Event *unused_event); // 뗀 시점
+	void onTouchCancelled(Touch *touch, Event *unused_event); // 터치가 취소됨
+
 	~puzzle();
 };
 
