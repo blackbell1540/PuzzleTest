@@ -21,12 +21,14 @@ private:
 
 	//create puzzle position
 	Vec2 puzzlePosition;
+	Vec2 createPosition;
 
 	//create partner position
 	Vec2 partnerPosition;
 
 	//baseScene
 	//Node* scene;
+	bool touched;
 
 public:
 	//constructor(puzzle number, puzzle position, partner position)
@@ -46,7 +48,7 @@ public:
 	void onTouchMoved(Touch *touch, Event *unused_event); // 드래그
 	void onTouchEnded(Touch *touch, Event *unused_event); // 뗀 시점
 	void onTouchCancelled(Touch *touch, Event *unused_event); // 터치가 취소됨
-
+	bool compareLocation(Vec2 onTouchBeginLocation);
 	~puzzle();
 };
 
