@@ -64,9 +64,12 @@ bool puzzle::onTouchBegan(Touch *touch, Event *unused_event){
 }
 void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
 	if(touched){
+		/*
 		puzzlePosition = touch->getLocation();
 		MoveTo *pAction = MoveTo::create(3.0f, puzzlePosition);
 		spritePuzzle->runAction(pAction);
+		*/
+		spritePuzzle->setPosition(touch->getLocation());
 	}else{
 		spritePuzzle->setPosition(puzzlePosition);
 	}
