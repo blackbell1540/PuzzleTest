@@ -76,7 +76,7 @@ bool HelloWorld::init()
 	
 	//backbone puzzle
 	{
-		puzzle* pz3 = new puzzle(470.0f, 220.0f, 545.0f, 867.0f, "backbone.png");
+		puzzle* pz3 = new puzzle(545.0f, 170.0f, 545.0f, 867.0f, "backbone.png");
 		pz3->addEvent();
 		Sprite* spz3 = pz3->getPuzzle();
 		Sprite* ppz3 = pz3->getPartnerPuzzle();
@@ -96,7 +96,7 @@ bool HelloWorld::init()
 	
 	//right arm puzzle
 	{
-		puzzle* pz3 = new puzzle(880.0f, 150.0f, 707.0f, 810.0f, "right_arm.png");
+		puzzle* pz3 = new puzzle(935.0f, 150.0f, 707.0f, 810.0f, "right_arm.png");
 		pz3->addEvent();
 		Sprite* spz3 = pz3->getPuzzle();
 		Sprite* ppz3 = pz3->getPartnerPuzzle();

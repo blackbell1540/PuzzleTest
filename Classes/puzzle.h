@@ -23,8 +23,9 @@ private:
 	//create partner position
 	Vec2 partnerPosition;
 
-	//baseScene
-	//Node* scene;
+	//sprite size
+	Size spriteSize;
+	//touch state
 	bool touched;
 
 	//Bounding Box

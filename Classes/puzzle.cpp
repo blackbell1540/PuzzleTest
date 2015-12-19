@@ -10,7 +10,9 @@ puzzle::puzzle(float puzzleX, float puzzleY,
 
 	//create spritePuzzle
 	spritePuzzle = Sprite::create(imageURI);
+	spriteSize = spritePuzzle->getContentSize();
 	spritePuzzle->setPosition(Vec2(puzzleX, puzzleY));
+	spritePuzzle->setScale(0.7f);
 	spritePuzzle->setZOrder(PUZZLE_Z);//PUZZLE_Z
 
 	createPosition = Vec2(puzzleX,puzzleY);
@@ -25,7 +27,6 @@ puzzle::~puzzle()
 
 void puzzle::createPartner(Vec2 partnerPosition)
 {
-	Size spriteSize = spritePuzzle->getContentSize();
 	pt = new partner(partnerPosition, spriteSize);
 }
 
@@ -52,8 +53,10 @@ void puzzle::addEvent(){
 //compare touch location with puzzle
 bool puzzle::compareLocation(Vec2 onTouchBeginLocation){
 	Vec2 location = onTouchBeginLocation;
-	if(puzzleRect.containsPoint(location))
-	{ return true; }
+	if(puzzleRect.containsPoint(location)){ 
+		spritePuzzle->setScale(1.0f);
+		return true;
+	}
 	return false;
 }
 
@@ -88,6 +91,7 @@ void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
 //touch end - return to created location
 void puzzle::onTouchEnded(Touch *touch, Event *unused_event){
 	if (false == corrected)	{
+		spritePuzzle->setScale(0.7f);
 		spritePuzzle->setPosition(createPosition);
 	}	
 	touched = false;
@@ -95,6 +99,7 @@ void puzzle::onTouchEnded(Touch *touch, Event *unused_event){
 
 void puzzle::onTouchCancelled(Touch *touch, Event *unused_event){
 	if (false == corrected)	{
+		spritePuzzle->setScale(0.7f);
 		spritePuzzle->setPosition(createPosition);
 	}
 	touched = false;
