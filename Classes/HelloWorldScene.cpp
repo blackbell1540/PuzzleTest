@@ -59,7 +59,6 @@ bool HelloWorld::init()
 	this->addChild(spz2);
 	this->addChild(ppz2);
 
-
     return true;
 }
 

@@ -12,10 +12,9 @@ class partner
 public:
 
 	Sprite* partnerPuzzle;
-	int partnerNumebr;
 
 	//constructor
-	partner(Vec2 position, Size size, int number);
+	partner(Vec2 position, Size size);
 	~partner(void);
 
 	Sprite* getPartner();

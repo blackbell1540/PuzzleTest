@@ -29,7 +29,7 @@ puzzle::~puzzle()
 void puzzle::createPartner(Vec2 partnerPosition, int partnerNumber)
 {
 	Size spriteSize = spritePuzzle->getContentSize();
-	pt = new partner(partnerPosition, spriteSize, partnerNumber);
+	pt = new partner(partnerPosition, spriteSize);
 }
 
 Sprite* puzzle::getPuzzle(){
