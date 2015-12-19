@@ -6,6 +6,10 @@
 class HelloWorld : public cocos2d::Layer
 {
 public:
+	//count puzzle
+	int goalCount;
+
+
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
 
@@ -15,6 +19,9 @@ public:
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     
+	//check ending
+	void checkEnding(float t);
+
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 

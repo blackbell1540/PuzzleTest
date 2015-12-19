@@ -31,6 +31,9 @@ bool HelloWorld::init()
     {
         return false;
     }
+
+	goalCount = 6;
+	schedule(schedule_selector(HelloWorld::checkEnding),0.5f);
     
 	/*background image*/
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -108,6 +111,12 @@ bool HelloWorld::init()
     return true;
 }
 
+void HelloWorld::checkEnding(float t){
+	int cPuzzleCnt = getCorrectPuzzleCount();
+	if(goalCount == cPuzzleCnt){
+		CCLOG("Ending!");
+	}
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
