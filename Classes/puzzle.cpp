@@ -78,7 +78,6 @@ void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
 		partnerRect = pt->getPartner()->getBoundingBox();
 		if(puzzleRect.intersectsRect(partnerRect)){
 			corrected = true;
-			correctPuzzleCount++;
 			Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(spritePuzzle);
 			spritePuzzle->setPosition(pt->getPartner()->getPosition());
 			//CCLOG("pos : %f, %f", touch->getLocation().x, touch->getLocation().y);

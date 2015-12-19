@@ -112,10 +112,9 @@ bool HelloWorld::init()
 }
 
 void HelloWorld::checkEnding(float t){
-	int cPuzzleCnt = getCorrectPuzzleCount();
-	if(goalCount == cPuzzleCnt){
+	/*if(goalCount){
 		CCLOG("Ending!");
-	}
+	}*/
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
