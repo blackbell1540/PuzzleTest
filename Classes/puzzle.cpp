@@ -2,23 +2,20 @@
 #include "partner.h"
 #include "DataSetting.h"
 
-puzzle::puzzle(int puzzleNumber, float puzzleX, float puzzleY,
+puzzle::puzzle(float puzzleX, float puzzleY,
 	float partnerX, float partnerY, string imageURI)
 {
+	//set corrected bit = false
 	corrected = false;
-
-	//set puzzleNumber
-	this->puzzleNumber = puzzleNumber;
 
 	//create spritePuzzle
 	spritePuzzle = Sprite::create(imageURI);
 	spritePuzzle->setPosition(Vec2(puzzleX, puzzleY));
 	spritePuzzle->setZOrder(PUZZLE_Z);//PUZZLE_Z
-	spritePuzzle->setTag(puzzleNumber);
 
 	createPosition = Vec2(puzzleX,puzzleY);
 	//create spritePartner
-	createPartner(Vec2(partnerX, partnerY), puzzleNumber);
+	createPartner(Vec2(partnerX, partnerY));
 
 }
 puzzle::~puzzle()
@@ -26,10 +23,10 @@ puzzle::~puzzle()
 	
 }
 
-void puzzle::createPartner(Vec2 partnerPosition, int partnerNumber)
+void puzzle::createPartner(Vec2 partnerPosition)
 {
 	Size spriteSize = spritePuzzle->getContentSize();
-	pt = new partner(partnerPosition, spriteSize, partnerNumber);
+	pt = new partner(partnerPosition, spriteSize);
 }
 
 Sprite* puzzle::getPuzzle(){

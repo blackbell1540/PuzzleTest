@@ -1,13 +1,10 @@
 #include "partner.h"
 #include "DataSetting.h"
 
-partner::partner(Vec2 position, Size size, int number)
+partner::partner(Vec2 position, Size size)
 {
-	//set puzzle number
-	this->partnerNumebr = number;
-
 	//sprite create
-	partnerPuzzle = Sprite::create("Grobot_03_01_bg.jpg");
+	partnerPuzzle = Sprite::create("none.png");
 	partnerPuzzle->setPosition(position);
 	partnerPuzzle->setContentSize(size);
 

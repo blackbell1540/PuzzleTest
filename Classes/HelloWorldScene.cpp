@@ -37,7 +37,7 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    Sprite* backgroundSprite = Sprite::create("Grobot_03_01_bg.jpg");
+    Sprite* backgroundSprite = Sprite::create("background.jpg");
 
     // position the sprite on the center of the screen
 	backgroundSprite->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
@@ -45,14 +45,14 @@ bool HelloWorld::init()
     // add the sprite as a child to this layer
 	this->addChild(backgroundSprite, BACKGROUND_Z);
     
-	puzzle* pz1 = new puzzle(1, 200.0f, 200.0f, 500.0f, 500.0f, "Grobot_03_03_1big.png");
+	puzzle* pz1 = new puzzle(1, 200.0f, 200.0f, 500.0f, 500.0f, "left_leg.png");
 	pz1->addEvent();
 	Sprite* spz1 = pz1->getPuzzle(); 
 	Sprite* ppz1 = pz1->getPartnerPuzzle();
 	this->addChild(spz1);
 	this->addChild(ppz1);
 
-	puzzle* pz2 = new puzzle(2, 300.0f, 300.0f, 800.0f, 800.0f, "Grobot_03_03_1big.png");
+	puzzle* pz2 = new puzzle(2, 300.0f, 300.0f, 800.0f, 800.0f, "right_leg.png");
 	pz2->addEvent();
 	Sprite* spz2 = pz2->getPuzzle(); 
 	Sprite* ppz2 = pz2->getPartnerPuzzle();
@@ -62,8 +62,6 @@ bool HelloWorld::init()
 
     return true;
 }
-
-
 
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

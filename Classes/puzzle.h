@@ -16,9 +16,6 @@ private:
 	//puzzle Sprite
 	Sprite* spritePuzzle;
 
-	//puzzle Number
-	int puzzleNumber;
-
 	//create puzzle position
 	Vec2 puzzlePosition;
 	Vec2 createPosition;
@@ -39,11 +36,11 @@ private:
 
 public:
 	//constructor(puzzle number, puzzle position, partner position)
-    puzzle(int puzzleNumber, float puzzleX, float puzzleY,
+    puzzle(float puzzleX, float puzzleY,
 		float partnerX, float partnerY, string imageURI);
 
 	//create partner
-	void createPartner(Vec2 partnerPosition, int partnerNumber);
+	void createPartner(Vec2 partnerPosition);
 
 	//get puzzle
 	Sprite* getPuzzle();
