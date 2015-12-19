@@ -77,6 +77,7 @@ void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
 			corrected = true;
 			Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(spritePuzzle);
 			spritePuzzle->setPosition(pt->getPartner()->getPosition());
+			CCLOG("pos : %f, %f", touch->getLocation().x, touch->getLocation().y);
 		}else{
 			corrected = false;
 		}
