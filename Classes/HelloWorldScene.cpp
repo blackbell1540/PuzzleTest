@@ -46,7 +46,7 @@ bool HelloWorld::init()
 
 	//left leg puzzle
 	{
-		puzzle* pz1 = new puzzle(200.0f, 200.0f, 420.0f, 480.0f, "left_leg.png");
+		puzzle* pz1 = new puzzle(100.0f, 150.0f, 420.0f, 480.0f, "left_leg.png");
 		pz1->addEvent();
 		Sprite* spz1 = pz1->getPuzzle();
 		Sprite* ppz1 = pz1->getPartnerPuzzle();
@@ -56,7 +56,7 @@ bool HelloWorld::init()
 	
 	//right leg puzzle
 	{
-		puzzle* pz2 = new puzzle(300.0f, 300.0f, 800.0f, 800.0f, "right_leg.png");
+		puzzle* pz2 = new puzzle(250.0f, 150.0f, 668.0f, 486.0f, "right_leg.png");
 		pz2->addEvent();
 		Sprite* spz2 = pz2->getPuzzle();
 		Sprite* ppz2 = pz2->getPartnerPuzzle();
@@ -66,14 +66,14 @@ bool HelloWorld::init()
 
 	//middle leg puzzle
 	{
-		puzzle* pz3 = new puzzle(400.0f, 400.0f, 500.0f, 700.0f, "middle_leg.png");
+		puzzle* pz3 = new puzzle(420.0f, 150.0f, 540.0f, 630.0f, "middle_leg.png");
 		pz3->addEvent();
 		Sprite* spz3 = pz3->getPuzzle();
 		Sprite* ppz3 = pz3->getPartnerPuzzle();
 		this->addChild(spz3);
 		this->addChild(ppz3);
 	}
-
+	
 	//backbone puzzle
 	{
 		puzzle* pz3 = new puzzle(470.0f, 220.0f, 545.0f, 867.0f, "backbone.png");
@@ -103,6 +103,7 @@ bool HelloWorld::init()
 		this->addChild(spz3);
 		this->addChild(ppz3);
 	}
+	
 
     return true;
 }
