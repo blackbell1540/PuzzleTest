@@ -12,7 +12,6 @@ class partner
 public:
 
 	Sprite* partnerPuzzle;
-	int partnerNumebr;
 
 	//constructor
 	partner(Vec2 position, Size size);
