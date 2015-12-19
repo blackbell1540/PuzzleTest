@@ -5,6 +5,8 @@
 puzzle::puzzle(int puzzleNumber, float puzzleX, float puzzleY,
 	float partnerX, float partnerY, string imageURI)
 {
+	corrected = false;
+
 	//set puzzleNumber
 	this->puzzleNumber = puzzleNumber;
 
@@ -70,7 +72,10 @@ bool puzzle::onTouchBegan(Touch *touch, Event *unused_event){
 void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
 	if(touched){
 		spritePuzzle->setPosition(touch->getLocation());
+		puzzleRect = spritePuzzle->getBoundingBox();
+		partnerRect = pt->getPartner()->getBoundingBox();
 		if(puzzleRect.intersectsRect(partnerRect)){
+			corrected = true;
 			spritePuzzle->setPosition(pt->getPartner()->getPosition());
 		}
 	}else{
@@ -79,11 +84,15 @@ void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
 }
 //touch end - return to created location
 void puzzle::onTouchEnded(Touch *touch, Event *unused_event){
-	spritePuzzle->setPosition(createPosition);
+	if (false == corrected)	{
+		spritePuzzle->setPosition(createPosition);
+	}	
 	touched = false;
 }
 
 void puzzle::onTouchCancelled(Touch *touch, Event *unused_event){
-	spritePuzzle->setPosition(createPosition);
+	if (false == corrected)	{
+		spritePuzzle->setPosition(createPosition);
+	}
 	touched = false;
 }

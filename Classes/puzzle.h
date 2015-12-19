@@ -33,6 +33,10 @@ private:
 	//Bounding Box
 	Rect puzzleRect;
 	Rect partnerRect;
+
+	//correct bit
+	bool corrected;
+
 public:
 	//constructor(puzzle number, puzzle position, partner position)
     puzzle(int puzzleNumber, float puzzleX, float puzzleY,
