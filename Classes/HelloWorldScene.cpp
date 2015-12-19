@@ -3,7 +3,6 @@
 //puzzle classes
 #include "puzzle.h"
 #include "partner.h"
-#include "puzzleController.h"
 #include "DataSetting.h"
 
 USING_NS_CC;
@@ -44,20 +43,66 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
 	this->addChild(backgroundSprite, BACKGROUND_Z);
-    
-	puzzle* pz1 = new puzzle(1, 200.0f, 200.0f, 500.0f, 500.0f, "left_leg.png");
-	pz1->addEvent();
-	Sprite* spz1 = pz1->getPuzzle(); 
-	Sprite* ppz1 = pz1->getPartnerPuzzle();
-	this->addChild(spz1);
-	this->addChild(ppz1);
 
-	puzzle* pz2 = new puzzle(2, 300.0f, 300.0f, 800.0f, 800.0f, "right_leg.png");
-	pz2->addEvent();
-	Sprite* spz2 = pz2->getPuzzle(); 
-	Sprite* ppz2 = pz2->getPartnerPuzzle();
-	this->addChild(spz2);
-	this->addChild(ppz2);
+	//left leg puzzle
+	{
+		puzzle* pz1 = new puzzle(200.0f, 200.0f, 420.0f, 480.0f, "left_leg.png");
+		pz1->addEvent();
+		Sprite* spz1 = pz1->getPuzzle();
+		Sprite* ppz1 = pz1->getPartnerPuzzle();
+		this->addChild(spz1);
+		this->addChild(ppz1);
+	}
+	
+	//right leg puzzle
+	{
+		puzzle* pz2 = new puzzle(300.0f, 300.0f, 800.0f, 800.0f, "right_leg.png");
+		pz2->addEvent();
+		Sprite* spz2 = pz2->getPuzzle();
+		Sprite* ppz2 = pz2->getPartnerPuzzle();
+		this->addChild(spz2);
+		this->addChild(ppz2);
+	}
+
+	//middle leg puzzle
+	{
+		puzzle* pz3 = new puzzle(400.0f, 400.0f, 500.0f, 700.0f, "middle_leg.png");
+		pz3->addEvent();
+		Sprite* spz3 = pz3->getPuzzle();
+		Sprite* ppz3 = pz3->getPartnerPuzzle();
+		this->addChild(spz3);
+		this->addChild(ppz3);
+	}
+
+	//backbone puzzle
+	{
+		puzzle* pz3 = new puzzle(400.0f, 400.0f, 500.0f, 700.0f, "backbone.png");
+		pz3->addEvent();
+		Sprite* spz3 = pz3->getPuzzle();
+		Sprite* ppz3 = pz3->getPartnerPuzzle();
+		this->addChild(spz3);
+		this->addChild(ppz3);
+	}
+
+	//left arm puzzle
+	{
+		puzzle* pz3 = new puzzle(400.0f, 400.0f, 500.0f, 700.0f, "left_arm.png");
+		pz3->addEvent();
+		Sprite* spz3 = pz3->getPuzzle();
+		Sprite* ppz3 = pz3->getPartnerPuzzle();
+		this->addChild(spz3);
+		this->addChild(ppz3);
+	}
+	
+	//right arm puzzle
+	{
+		puzzle* pz3 = new puzzle(400.0f, 400.0f, 500.0f, 700.0f, "right_arm.png");
+		pz3->addEvent();
+		Sprite* spz3 = pz3->getPuzzle();
+		Sprite* ppz3 = pz3->getPartnerPuzzle();
+		this->addChild(spz3);
+		this->addChild(ppz3);
+	}
 
     return true;
 }
