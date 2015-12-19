@@ -52,6 +52,13 @@ bool HelloWorld::init()
 	this->addChild(spz1);
 	this->addChild(ppz1);
 
+	puzzle* pz2 = new puzzle(2, 300.0f, 300.0f, 800.0f, 800.0f, "Grobot_03_03_1big.png");
+	pz2->addEvent();
+	Sprite* spz2 = pz2->getPuzzle(); 
+	Sprite* ppz2 = pz2->getPartnerPuzzle();
+	this->addChild(spz2);
+	this->addChild(ppz2);
+
 
     return true;
 }

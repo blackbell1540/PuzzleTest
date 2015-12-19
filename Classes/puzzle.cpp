@@ -38,6 +38,7 @@ Sprite* puzzle::getPartnerPuzzle(){
 	return pt->getPartner();
 }
 
+//add touch event listener
 void puzzle::addEvent(){
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->setSwallowTouches(true);
@@ -49,35 +50,40 @@ void puzzle::addEvent(){
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, spritePuzzle);
 }
 
+//compare touch location with puzzle
 bool puzzle::compareLocation(Vec2 onTouchBeginLocation){
 	Vec2 location = onTouchBeginLocation;
-	Rect rect = spritePuzzle->getBoundingBox();
-	if(rect.containsPoint(location))
+	if(puzzleRect.containsPoint(location))
 	{ return true; }
 	return false;
 }
 
+//touch start - compare
 bool puzzle::onTouchBegan(Touch *touch, Event *unused_event){
+	puzzleRect = spritePuzzle->getBoundingBox();
+	partnerRect = pt->getPartner()->getBoundingBox();
 	if(compareLocation(touch->getLocation()))
 	{ touched = true; return true; }
 	return false;
 }
+//touch move(drag) - move to current touch location
 void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
 	if(touched){
-		/*
-		puzzlePosition = touch->getLocation();
-		MoveTo *pAction = MoveTo::create(3.0f, puzzlePosition);
-		spritePuzzle->runAction(pAction);
-		*/
 		spritePuzzle->setPosition(touch->getLocation());
+		if(puzzleRect.intersectsRect(partnerRect)){
+			spritePuzzle->setPosition(pt->getPartner()->getPosition());
+		}
 	}else{
 		spritePuzzle->setPosition(puzzlePosition);
 	}
 }
+//touch end - return to created location
 void puzzle::onTouchEnded(Touch *touch, Event *unused_event){
 	spritePuzzle->setPosition(createPosition);
 	touched = false;
 }
+
 void puzzle::onTouchCancelled(Touch *touch, Event *unused_event){
 	spritePuzzle->setPosition(createPosition);
+	touched = false;
 }

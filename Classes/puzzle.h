@@ -30,6 +30,9 @@ private:
 	//Node* scene;
 	bool touched;
 
+	//Bounding Box
+	Rect puzzleRect;
+	Rect partnerRect;
 public:
 	//constructor(puzzle number, puzzle position, partner position)
     puzzle(int puzzleNumber, float puzzleX, float puzzleY,
