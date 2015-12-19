@@ -64,8 +64,10 @@ bool puzzle::compareLocation(Vec2 onTouchBeginLocation){
 bool puzzle::onTouchBegan(Touch *touch, Event *unused_event){
 	puzzleRect = spritePuzzle->getBoundingBox();
 	partnerRect = pt->getPartner()->getBoundingBox();
-	if(compareLocation(touch->getLocation()))
-	{ touched = true; return true; }
+	if(corrected == false){
+		if(compareLocation(touch->getLocation()))
+		{ touched = true; return true; }
+	}
 	return false;
 }
 //touch move(drag) - move to current touch location
@@ -76,7 +78,10 @@ void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
 		partnerRect = pt->getPartner()->getBoundingBox();
 		if(puzzleRect.intersectsRect(partnerRect)){
 			corrected = true;
+			Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(spritePuzzle);
 			spritePuzzle->setPosition(pt->getPartner()->getPosition());
+		}else{
+			corrected = false;
 		}
 	}else{
 		spritePuzzle->setPosition(puzzlePosition);
