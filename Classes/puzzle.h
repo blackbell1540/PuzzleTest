@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "partner.h"
+#include "gameController.h"
 #include <string>
 
 using namespace std;

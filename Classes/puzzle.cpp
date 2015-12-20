@@ -1,5 +1,4 @@
 #include "puzzle.h"
-#include "partner.h"
 #include "DataSetting.h"
 
 puzzle::puzzle(float puzzleX, float puzzleY,
@@ -76,8 +75,10 @@ void puzzle::onTouchMoved(Touch *touch, Event *unused_event){
 		spritePuzzle->setPosition(touch->getLocation());
 		puzzleRect = spritePuzzle->getBoundingBox();
 		partnerRect = pt->getPartner()->getBoundingBox();
+		//conflict
 		if(puzzleRect.intersectsRect(partnerRect)){
 			corrected = true;
+			gameController::getInstance()->plusPuzzleCount();
 			Director::getInstance()->getEventDispatcher()->removeEventListenersForTarget(spritePuzzle);
 			spritePuzzle->setPosition(pt->getPartner()->getPosition());
 			//CCLOG("pos : %f, %f", touch->getLocation().x, touch->getLocation().y);

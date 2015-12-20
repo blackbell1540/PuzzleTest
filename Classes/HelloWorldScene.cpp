@@ -3,6 +3,7 @@
 //puzzle classes
 #include "puzzle.h"
 #include "partner.h"
+#include "gameController.h"
 #include "DataSetting.h"
 
 USING_NS_CC;
@@ -33,6 +34,7 @@ bool HelloWorld::init()
     }
 
 	goalCount = 6;
+	gameController::getInstance()->initPuzzleCount();
 	schedule(schedule_selector(HelloWorld::checkEnding),0.5f);
     
 	/*background image*/
@@ -112,9 +114,10 @@ bool HelloWorld::init()
 }
 
 void HelloWorld::checkEnding(float t){
-	/*if(goalCount){
+	int curCount = gameController::getInstance()->getPuzzleCount();
+	if(goalCount == curCount){
 		CCLOG("Ending!");
-	}*/
+	}
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
