@@ -22,6 +22,10 @@ public:
 	//check ending
 	void checkEnding(float t);
 
+	//ending effect
+	void showCompleteSprite();
+	void showEndingPopUp();
+
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 

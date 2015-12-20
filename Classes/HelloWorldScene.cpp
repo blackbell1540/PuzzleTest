@@ -117,7 +117,18 @@ void HelloWorld::checkEnding(float t){
 	int curCount = gameController::getInstance()->getPuzzleCount();
 	if(goalCount == curCount){
 		CCLOG("Ending!");
+		showCompleteSprite();
 	}
+}
+
+//ending effect
+void HelloWorld::showCompleteSprite(){
+	Sprite* spriteComplete = Sprite::create("clear_body.png");
+	spriteComplete->setPosition(Vec2(545.0f, 710.0f));
+	spriteComplete->setZOrder(PARTNER_Z+1);
+	this->addChild(spriteComplete);
+}
+void HelloWorld::showEndingPopUp(){
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
