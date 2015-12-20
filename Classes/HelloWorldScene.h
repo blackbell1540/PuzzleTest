@@ -24,8 +24,14 @@ public:
 	void checkEnding(float t);
 
 	//ending effect
-	void showCompleteSprite();
-	void showEndingPopUp();
+	void showCompleteSprite(float dt);
+	void showEndingPopUp(float dt);
+
+	//functions in endingPopup
+	void endingPopupBtns(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
+	//regame
+	void reGame();
+	void nextGame();
 
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);

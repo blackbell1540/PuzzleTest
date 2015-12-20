@@ -108,34 +108,7 @@ bool HelloWorld::init()
 		Sprite* ppz3 = pz3->getPartnerPuzzle();
 		this->addChild(spz3);
 		this->addChild(ppz3);
-	}
-
-	{
-		//ui test
-		Layout* popLayout = Layout::create();
-		popLayout->setSize(visibleSize);
-		popLayout->setPosition(Vec2());
-		popLayout->setAnchorPoint(Vec2());
-		popLayout->setBackGroundColorType(LayoutBackGroundColorType::SOLID);
-		popLayout->setBackGroundColor(Color3B::BLACK);
-		popLayout->setBackGroundColorOpacity(255 * POPUPLAYOUT_OPACITY_PERCENT);
-		this->addChild(popLayout, POPUPLAYOUT_Z);
-		
-		Button* b = Button::create("replay.png", "replay_s.png");
-		b->setPosition(Vec2(visibleSize.width / 2 - 200, visibleSize.height / 2 - 600));
-		//b->addTouchEventListener();
-		popLayout->addChild(b, 3);
-
-		Button* b2 = Button::create("next.png", "next_s.png");
-		b2->setPosition(Vec2(visibleSize.width / 2 + 200, visibleSize.height / 2 - 600));
-		//b->addTouchEventListener();
-		popLayout->addChild(b2, 3);
-
-		Sprite* resultSpr = Sprite::create("reward.png");
-		resultSpr->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 100));
-		popLayout->addChild(resultSpr, 3);
-	}
-	
+	}	
 
     return true;
 }
@@ -144,18 +117,80 @@ void HelloWorld::checkEnding(float t){
 	int curCount = gameController::getInstance()->getPuzzleCount();
 	if(goalCount == curCount){
 		CCLOG("Ending!");
-		showCompleteSprite();
+		//unschedule check puzzle count
+		this->unschedule(schedule_selector(HelloWorld::checkEnding));
+
+		//ending effect
+		this->scheduleOnce(schedule_selector(HelloWorld::showCompleteSprite), SHOWCLEARIMAGE_DELAYTIME);
+
+		//show ending popup
+		this->scheduleOnce(schedule_selector(HelloWorld::showEndingPopUp), SHOWPOPUPREWARD_DELAYTIME);
 	}
 }
 
 //ending effect
-void HelloWorld::showCompleteSprite(){
+void HelloWorld::showCompleteSprite(float dt){
 	Sprite* spriteComplete = Sprite::create("clear_body.png");
 	spriteComplete->setPosition(Vec2(545.0f, 710.0f));
 	spriteComplete->setZOrder(PARTNER_Z+1);
 	this->addChild(spriteComplete);
 }
-void HelloWorld::showEndingPopUp(){
+
+void HelloWorld::showEndingPopUp(float dt){
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	//ui test
+	Layout* popLayout = Layout::create();
+	popLayout->setSize(visibleSize);
+	popLayout->setPosition(Vec2());
+	popLayout->setAnchorPoint(Vec2());
+	popLayout->setBackGroundColorType(LayoutBackGroundColorType::SOLID);
+	popLayout->setBackGroundColor(Color3B::BLACK);
+	popLayout->setBackGroundColorOpacity(255 * POPUPLAYOUT_OPACITY_PERCENT);
+	this->addChild(popLayout, POPUPLAYOUT_Z);
+
+	Button* replayBtn = Button::create("replay.png", "replay_s.png");
+	replayBtn->setPosition(Vec2(visibleSize.width / 2 - 200, visibleSize.height / 2 - 600));
+	replayBtn->addTouchEventListener(CC_CALLBACK_2(HelloWorld::endingPopupBtns, this));
+	replayBtn->setTag(1);
+	popLayout->addChild(replayBtn, 1);
+
+	Button* nextBtn = Button::create("next.png", "next_s.png");
+	nextBtn->setPosition(Vec2(visibleSize.width / 2 + 200, visibleSize.height / 2 - 600));
+	nextBtn->addTouchEventListener(CC_CALLBACK_2(HelloWorld::endingPopupBtns, this));
+	nextBtn->setTag(2);
+	popLayout->addChild(nextBtn, 1);
+
+	Sprite* resultSpr = Sprite::create("reward.png");
+	resultSpr->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 100));
+	popLayout->addChild(resultSpr, 1);
+}
+
+void HelloWorld::endingPopupBtns(Ref* pSender, Widget::TouchEventType type){
+	if (Widget::TouchEventType::ENDED == type){
+		Button* b = (Button*)pSender;
+		int tag = b->getTag();
+		switch (tag)
+		{
+		case 1:
+			reGame();
+			break;
+		case 2:
+			nextGame();
+			break;
+		default:
+			break;
+		}
+	}	
+}
+
+void HelloWorld::reGame(){
+	Scene* s = HelloWorld::createScene();
+	Director::getInstance()->replaceScene(s);
+}
+void HelloWorld::nextGame(){
+	//go nextScene
+	//Scene* s = nextScene::createScene();
+	//Director::getInstance()->replaceScene(s);
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
