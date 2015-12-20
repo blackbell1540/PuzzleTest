@@ -7,6 +7,7 @@
 #include "DataSetting.h"
 
 USING_NS_CC;
+using namespace ui;
 
 Scene* HelloWorld::createScene()
 {
@@ -107,6 +108,32 @@ bool HelloWorld::init()
 		Sprite* ppz3 = pz3->getPartnerPuzzle();
 		this->addChild(spz3);
 		this->addChild(ppz3);
+	}
+
+	{
+		//ui test
+		Layout* popLayout = Layout::create();
+		popLayout->setSize(visibleSize);
+		popLayout->setPosition(Vec2());
+		popLayout->setAnchorPoint(Vec2());
+		popLayout->setBackGroundColorType(LayoutBackGroundColorType::SOLID);
+		popLayout->setBackGroundColor(Color3B::BLACK);
+		popLayout->setBackGroundColorOpacity(255 * POPUPLAYOUT_OPACITY_PERCENT);
+		this->addChild(popLayout, POPUPLAYOUT_Z);
+		
+		Button* b = Button::create("replay.png", "replay_s.png");
+		b->setPosition(Vec2(visibleSize.width / 2 - 200, visibleSize.height / 2 - 600));
+		//b->addTouchEventListener();
+		popLayout->addChild(b, 3);
+
+		Button* b2 = Button::create("next.png", "next_s.png");
+		b2->setPosition(Vec2(visibleSize.width / 2 + 200, visibleSize.height / 2 - 600));
+		//b->addTouchEventListener();
+		popLayout->addChild(b2, 3);
+
+		Sprite* resultSpr = Sprite::create("reward.png");
+		resultSpr->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 100));
+		popLayout->addChild(resultSpr, 3);
 	}
 	
 
