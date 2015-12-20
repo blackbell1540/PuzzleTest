@@ -1,5 +1,6 @@
 #include "gameController.h"
 
+static gameController* instance = nullptr;
 
 gameController::gameController(){
 	initPuzzleCount();

@@ -6,7 +6,7 @@ public:
 	~gameController();
 	
 	//sigleton instance
-	static gameController* instance;
+	
 
 	//getInstance
 	static gameController* getInstance();
